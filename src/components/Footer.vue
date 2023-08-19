@@ -1,26 +1,58 @@
 <template>
   <div class="footer">
-    <div>
-      <router-link to="/home"><van-icon name="wap-home-o" />首页</router-link>
+    <div class="item">
+      <router-link to="/home" class="nav-bar" active-class="nav_color">
+        <van-icon name="wap-home-o" size="30"/>
+        首页
+      </router-link>
     </div>
-    <div>
-      <router-link to="/cart"><van-icon name="sign" />购物车</router-link>
+    <div class="item">
+      <router-link to="/cart" class="nav-bar" active-class="nav_color">
+        <van-icon name="add" size="30"/>
+        购物车
+      </router-link>
     </div>
-    <div>
-      <router-link to="/order"><van-icon name="sign" />订单</router-link>
+    <div class="item">
+      <router-link to="/order" class="nav-bar" active-class="nav_color">
+        <van-icon name="sign" size="30"/>
+        订单
+      </router-link>
     </div>
-    <div>
-      <router-link to="/me"><van-icon name="user-o" />我的</router-link>
+    <div class="item">
+      <router-link to="/mine" class="nav-bar" active-class="nav_color">
+        <van-icon name="user-o" size="30"/>
+        我的
+      </router-link>
     </div>
   </div>
 
 </template>
 
 <script>
-export default {
-}
+export default {}
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+.footer {
+  display: flex;
+  width: 100%;
+  font-size: 12px;
+  justify-content: space-around;
+  background: white;
+  border-top: 1px solid #eee;
 
+  .item {
+    .nav_color {
+      color: #ffc400;
+    }
+
+    .nav-bar {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+
+    }
+
+  }
+}
 </style>
