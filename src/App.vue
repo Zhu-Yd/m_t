@@ -1,15 +1,12 @@
 <template>
-  <Footer/>
    <router-view></router-view>
 </template>
 
 <script>
-import Footer from "@/components/Footer";
 
 export default {
   name: 'App',
   components: {
-    Footer
   }
 }
 </script>
