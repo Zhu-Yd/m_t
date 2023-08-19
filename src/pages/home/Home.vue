@@ -1,19 +1,20 @@
 <template>
-  <Footer/>
-   <router-view></router-view>
+  <div class="home">
+    <div class="content"></div>
+    <Footer/>
+  </div>
 </template>
 
 <script>
 import Footer from "@/components/Footer";
 
 export default {
-  name: 'App',
   components: {
-    Footer
-  }
+    Footer,
+  },
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
