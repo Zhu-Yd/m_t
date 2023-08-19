@@ -17,7 +17,7 @@ const router = createRouter({
             component: () => import('../pages/cart/Cart'),
         },
         {
-            path: '/me',
+            path: '/mine',
             component: () => import('../pages/mine/Mine'),
         },
         {
