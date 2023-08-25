@@ -24,6 +24,10 @@ const router = createRouter({
             path: '/order',
             component: () => import('../pages/order/Order'),
         },
+        {
+            path: '/shop',
+            component: () => import('../pages/shop/Shop'),
+        }
     ],
 });
 export default router;

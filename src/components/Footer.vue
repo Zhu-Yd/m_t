@@ -8,7 +8,7 @@
     </div>
     <div class="item">
       <router-link to="/cart" class="nav-bar" active-class="nav_color">
-        <van-icon name="add" size="30"/>
+        <van-icon name="cart-o" size="30"/>
         购物车
       </router-link>
     </div>
