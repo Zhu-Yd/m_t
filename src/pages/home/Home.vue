@@ -189,7 +189,7 @@ export default {
 
 .home {
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
   height: 100%;
 
   .content {

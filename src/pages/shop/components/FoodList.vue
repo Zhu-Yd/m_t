@@ -4,16 +4,18 @@
     <van-tree-select
         height="88vw"
         :items="items"
-        :main-active-index.sync="active"
+        v-model:main-active-index="active"
         @click-nav="navClick">
       <template #content>
-        <div v-for="(i, index) in subItem" class="item_bg">
+        <div v-for="i in subItem" class="item_bg" :key="i.id">
           <FoodAdd
               :item="i"
-              :showAdd="true"
-              :addClick="addClick"
-              :onChange="onChange"
+              @changeNum="i.num=$event"
+              @changeAddShow="i.add=$event"
           />
+<!--              :showAdd="true"-->
+<!--              :addClick="addClick"-->
+<!--              :onChange="onChange"-->
         </div>
       </template>
     </van-tree-select>
@@ -27,6 +29,7 @@ import FoodAdd from "@/components/FoodAdd";
 import {useStore} from "vuex";
 
 export default {
+  name: 'FoodList',
   props: ['foodData', 's_index'],
   components: {
     FoodAdd
@@ -53,13 +56,12 @@ export default {
               // console.log("购物车数据：", innerItem)
               // console.log("页面数据：", item)
               if (innerItem.id == item.id) {
-                console.log("数据id相等")
                 item.num = innerItem.num
-                item.add=false
+                item.add = false
               }
             })
           })
-          console.log(data.subItem)
+          // console.log(data.subItem)
 
         }
       });
@@ -73,29 +75,30 @@ export default {
       init()
     };
     // 切换步进器
-    const addClick = (i) => {
-      data.subItem.forEach((item) => {
-        if (item.id === i) {
-          item.add = false;
-          item.num += 1;
-        }
-      });
-    };
+    // const addClick = (i) => {
+    //   data.subItem.forEach(async (item) => {
+    //     if (item.id === i) {
+    //       item.num += 1
+    //       await nextTick()
+    //       item.add = false
+    //     }
+    //   });
+    // };
 
     // 步进器增加触发事件
-    const onChange = (value, detail) => {
-      data.subItem.forEach((item) => {
-        if (item.id === detail.name) {
-          item.num = value;
-          if (value == 0) {
-            item.add = true //为0时，显示+号按钮
-            // console.log(item.add)
-          }
-
-        }
-      });
-    };
-    return {...toRefs(data), navClick, addClick, onChange}
+    // const onChange = (value, detail) => {
+    //   data.subItem.forEach((item) => {
+    //     if (item.id === detail.name) {
+    //       item.num = value;
+    //       if (value == 0) {
+    //         item.add = true //为0时，显示+号按钮
+    //         // console.log(item.add)
+    //       }
+    //
+    //     }
+    //   });
+    // };
+    return {...toRefs(data), navClick}
   }
 };
 </script>

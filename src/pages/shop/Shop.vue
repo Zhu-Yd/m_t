@@ -36,12 +36,12 @@
 </template>
 
 <script>
-import Header from "../../components/Header.vue";
-import FoodList from "@/pages/shop/components/FoodList";
-import {reactive, toRefs} from "vue";
-import {useRouter} from 'vue-router';
-import {Toast} from "vant";
-import {useStore} from "vuex"
+import Header from '../../components/Header.vue'
+import FoodList from '@/pages/shop/components/FoodList'
+import {reactive, toRefs} from 'vue'
+import {useRouter} from 'vue-router'
+import {Toast} from 'vant'
+import {useStore} from 'vuex'
 
 export default {
   components: {
@@ -57,11 +57,10 @@ export default {
     const store = useStore();
     const service = () => {
       Toast.fail("敬请期待...");
-
     }
     const toCart = () => {
       router.push('./cart')
-      console.log("toCart")
+      // console.log("toCart")
     }
     const handleAddCart = (type) => {
       let dataList = []
@@ -76,11 +75,12 @@ export default {
       data.cart_num = dataList.length;
 
       // console.log("当前购物车：", dataList)
+      store.commit("addCart", dataList)
+
       if(dataList.length===0){
         Toast("请选择商品")
         return
       }
-      store.commit("addCart", dataList)
       if (type=='buy'){
         toCart()
       }
@@ -173,16 +173,9 @@ export default {
     })
     return {
       ...toRefs(data),
-      service, toCart, handleAddCart, clickBuy,store,
+      service, toCart, handleAddCart, clickBuy,
     }
   },
-  // data() {
-  //   return {
-  //
-  //   }
-  // }
-
-
 };
 </script>
 
