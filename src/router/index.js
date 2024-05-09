@@ -27,6 +27,14 @@ const router = createRouter({
         {
             path: '/shop',
             component: () => import('../pages/shop/Shop'),
+        },
+        {
+            path: '/toAddress',
+            component: () => import('../pages/address/index'),
+        },
+        {
+            path: '/address',
+            component: () => import('../pages/address/components/Address'),
         }
     ],
 });

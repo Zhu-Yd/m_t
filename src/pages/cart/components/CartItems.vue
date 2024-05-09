@@ -138,8 +138,12 @@ export default {
       const result = tempList.filter(item => {
         return data.ticks.includes(item.id)
       })
-      store.commit('addOrderList',result)
-      router.push('/order')
+      if (result.length > 0) {
+        store.commit('addOrderList', result)
+        router.push('/order')
+      }else{
+        Toast.fail('请选择结算商品')
+      }
     }
 
     return {store, ...toRefs(data), chooseAll, changeNumFn, groupChange, deleteFn, resultPrice, onSubmit}
