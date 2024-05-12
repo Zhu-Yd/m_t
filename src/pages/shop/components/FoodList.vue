@@ -112,11 +112,11 @@ export default {
   }
 }
 
-/deep/ .van-tree-select__item--active {
+:deep(.van-tree-select__item--active) {
   color: #ffc400;
 }
 
-/deep/ .van-sidebar-item--select::before {
+:deep(.van-sidebar-item--select::before) {
   background-color: #ffc400;
 }
 </style>

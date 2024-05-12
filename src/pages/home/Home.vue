@@ -183,7 +183,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-/deep/ .van-tabs__wrap {
+:deep(.van-tabs__wrap){
   border-radius: 10px;
 }
 

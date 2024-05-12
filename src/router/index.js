@@ -1,5 +1,5 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
-
+import { createRouter, createWebHashHistory } from 'vue-router'
+import {Toast} from 'vant'
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -19,10 +19,16 @@ const router = createRouter({
         {
             path: '/mine',
             component: () => import('../pages/mine/Mine'),
+             meta: {
+                isAuth: true
+            }
         },
         {
             path: '/order',
             component: () => import('../pages/order/Order'),
+             meta: {
+                isAuth: true
+            }
         },
         {
             path: '/shop',
@@ -31,11 +37,42 @@ const router = createRouter({
         {
             path: '/toAddress',
             component: () => import('../pages/address/index'),
+             meta: {
+                isAuth: true
+            }
         },
         {
             path: '/address',
             component: () => import('../pages/address/components/Address'),
+             meta: {
+                isAuth: true
+            }
+        },
+        {
+            path: '/login',
+            component: () => import('@/pages/login/Login'),
+        },
+        {
+            path: '/register',
+            component: () => import('@/pages/login/Register'),
+        },
+        {
+            path: '/userinfoedit',
+            component: () => import('@/pages/mine/UserInfoEdit'),
         }
     ],
 });
+
+router.beforeEach((to,from,next)=>{
+    if(to.meta.isAuth){
+        if(localStorage.getItem('isLogin')==1){
+            next()
+        }else{
+            Toast('请先登录')
+            router.push('/login')
+        }
+    }else{
+        next()
+    }
+})
 export default router;

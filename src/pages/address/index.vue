@@ -6,7 +6,7 @@
         default-tag-text="默认"
         @add="onHandler($event,'add')"
         @edit="onHandler($event,'edit')"
-        @select="onSelected"
+        @select="(item, index) => onSelected('test', item, index)"
     />
   </div>
 </template>
@@ -56,7 +56,8 @@ export default {
       })
     }
 
-    const onSelected = (item, index) =>{
+    const onSelected = (type, item, index) =>{
+      console.log(type)
       let tempList = [...store.state.addressList]
       tempList.forEach(item => {
         item.isSelected = false
